@@ -1,17 +1,39 @@
 radio.onReceivedNumber(function (receivedNumber) {
     你出拳 = receivedNumber
     while (我出拳 == 0) {
-        basic.showString("?")
-        basic.pause(3000)
         if (你出拳 == 1) {
+            basic.showLeds(`
+                # # # # .
+                # . . . #
+                . . # # .
+                . . . . .
+                . . # . .
+                `)
+            basic.pause(3000)
             我出拳 = 2
             basic.showIcon(IconNames.SmallSquare)
             radio.sendNumber(我出拳)
         } else if (你出拳 == 2) {
+            basic.pause(3000)
+            basic.showLeds(`
+                . # # # .
+                # . . . #
+                . . # # .
+                . . # . .
+                . . # . .
+                `)
             我出拳 = 3
             basic.showIcon(IconNames.Square)
             radio.sendNumber(我出拳)
         } else if (你出拳 == 3) {
+            basic.pause(3000)
+            basic.showLeds(`
+                . # # # #
+                # . . . #
+                . . # # .
+                . . . . .
+                . . # . .
+                `)
             我出拳 = 1
             basic.showIcon(IconNames.Scissors)
             radio.sendNumber(我出拳)
@@ -34,6 +56,9 @@ function 設定初值 () {
     我出拳 = 0
     你出拳 = 0
 }
+input.onGesture(Gesture.Shake, function () {
+    basic.showString("?")
+})
 function 比輸贏 () {
     if (我出拳 == 你出拳) {
         basic.showIcon(IconNames.Duck)
@@ -65,6 +90,3 @@ let 我出拳 = 0
 let 你出拳 = 0
 radio.setGroup(50)
 設定初值()
-basic.forever(function () {
-	
-})
