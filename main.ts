@@ -2,6 +2,20 @@ radio.onReceivedNumber(function (receivedNumber) {
     你出拳 = receivedNumber
     while (我出拳 == 0) {
         basic.showString("?")
+        basic.pause(3000)
+        if (你出拳 == 1) {
+            我出拳 = 2
+            basic.showIcon(IconNames.SmallSquare)
+            radio.sendNumber(我出拳)
+        } else if (你出拳 == 2) {
+            我出拳 = 3
+            basic.showIcon(IconNames.Square)
+            radio.sendNumber(我出拳)
+        } else if (你出拳 == 3) {
+            我出拳 = 1
+            basic.showIcon(IconNames.Scissors)
+            radio.sendNumber(我出拳)
+        }
     }
     basic.pause(1000)
     比輸贏()
